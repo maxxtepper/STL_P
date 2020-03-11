@@ -69,5 +69,73 @@ int main() {
 		//	find each element from set in vector
 	}
 
+	{
+		//	find
+		//	array
+		int *p = std::find(arr, arr+4, 2);
+		if (p != arr+4)
+			std::cout << "Element found in arr: " << *p << std::endl;
+		else
+			std::cout << "Element not found in arr\n";
+		//	std::array
+		auto pend = nums_arr.begin() + 4;
+		if (std::find(nums_arr.begin(), pend, 3) != pend)
+			std::cout << "Element found in nums_arr" << std::endl;
+		else
+			std::cout << "Element not found in nums_arr\n";
+		//	std::vector
+		std::vector<int>::iterator pitr;
+		pitr = std::find(nums_vec.begin(), nums_vec.end(), 3);
+		if (pitr != nums_vec.end())
+			std::cout << "Element found in nums_vec: " << *pitr << std::endl;
+		else
+			std::cout << "Element not found in nums_vec\n";
+		//	std::set
+		std::set<int>::iterator sitr;
+		sitr = std::find(nums_set.begin(), nums_set.end(), 3);
+		if (sitr != nums_set.end())
+			std::cout << "Element found in nums_set: " << *sitr << std::endl;
+		else
+			std::cout << "Element not found in nums_set\n";
+	}
+
+	{
+		//	find_if
+		//	std::vector
+		std::vector<int>::iterator vitr;
+		vitr = std::find_if(nums_vec.begin(), nums_vec.end(), [](int i){return !(i%4);});
+		if (vitr != nums_vec.end())
+			std::cout << "nums_vec has element divisible by 4: " << *vitr << std::endl;
+		else
+			std::cout << "nums_vec has no element divisible by 4\n";
+		//	std::set
+		std::set<int>::iterator sitr;
+		sitr = std::find_if(nums_set.begin(), nums_set.end(), [](int i){return !(i%5);});
+		if (sitr != nums_set.end())
+			std::cout << "nums_set has element divisible by 5: " << *sitr << std::endl;
+		else
+			std::cout << "nums_set has no element divisible by 5\n";
+	}
+
+	{
+		//	find_if_not
+		//	std::vector
+		std::vector<int>::iterator vitr;
+		vitr = std::find_if_not(nums_vec.begin(), nums_vec.end(), [](int i){return i%4;});
+		if (vitr != nums_vec.end())
+			std::cout << "nums_vec has element divisible by 4: " << *vitr << std::endl;
+		else
+			std::cout << "nums_vec has no element divisible by 4\n";
+		//	std::set
+		std::set<int>::iterator sitr;
+		sitr = std::find_if_not(nums_set.begin(), nums_set.end(), [](int i){return i%5;});
+		if (sitr != nums_set.end())
+			std::cout << "nums_set has element divisible by 5: " << *sitr << std::endl;
+		else
+			std::cout << "nums_set has no element divisible by 5\n";
+	}
+
+	
+
 	return 0;
 }
