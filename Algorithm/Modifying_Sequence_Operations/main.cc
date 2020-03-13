@@ -3,6 +3,7 @@
 #include <vector>
 #include <set>
 #include <iterator>
+#include <forward_list>
 
 void Print(int i) {
 	std::cout << " " << i;
@@ -36,6 +37,12 @@ int main() {
 	std::cout << "nums_vec_n contains:";
 	std::for_each(nums_vec_n.begin(), nums_vec_n.end(), Print);
 	std::cout << "\n";
+
+	//	std::copy_if
+	//	if an element from the set is in the vector, copy it into a forward list, sorted
+	std::forward_list<int> nums_flist;
+	std::copy_if(nums_set.begin(), nums_set.end(), nums_flist.begin(), [&nums_vec, &nums_set](int i) { return(std::count(nums_vec.begin(), nums_vec.end(), i));}); 
+
 
 	return 0;
 }
