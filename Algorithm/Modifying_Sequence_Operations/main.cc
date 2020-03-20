@@ -41,8 +41,11 @@ int main() {
 	//	std::copy_if
 	//	if an element from the set is in the vector, copy it into a forward list, sorted
 	std::forward_list<int> nums_flist;
-	std::copy_if(nums_set.begin(), nums_set.end(), nums_flist.begin(), [&nums_vec, &nums_set](int i) { return(std::count(nums_vec.begin(), nums_vec.end(), i));}); 
-
+	std::copy_if(nums_set.begin(), nums_set.end(), nums_flist.begin(), 
+		[&nums_vec](int i) { 
+			std::cout << i << std::endl;
+			return (std::count(nums_vec.begin(), nums_vec.end(), i));
+		}); 
 
 	return 0;
 }
